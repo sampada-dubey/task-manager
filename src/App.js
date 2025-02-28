@@ -1,25 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import TaskForm from "./components/TaskForm";
+import TaskList from "./components/TaskList";
 
-function App() {
+const App = () => {
+  const [tasks, setTasks] = useState([]);
+
+  // Function to add a new task
+  const addTask = (taskText) => {
+    const newTask = {
+      id: Date.now(),
+      text: taskText,
+      completed: false,
+    };
+    setTasks([...tasks, newTask]);
+  };
+
+  // Function to delete a task
+  const deleteTask = (taskId) => {
+    setTasks(tasks.filter((task) => task.id !== taskId));
+  };
+
+  // Function to mark a task as completed
+  const toggleComplete = (taskId) => {
+    setTasks(
+      tasks.map((task) =>
+        task.id === taskId ? { ...task, completed: !task.completed } : task
+      )
+    );
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <h1>Task Manager</h1>
+      <TaskForm onAddTask={addTask} />
+      <TaskList tasks={tasks} onDeleteTask={deleteTask} onToggleComplete={toggleComplete} />
     </div>
   );
-}
+};
 
 export default App;
