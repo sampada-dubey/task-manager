@@ -1,3 +1,5 @@
+import './index.css'; // This applies Tailwind styles globally
+
 import React, { useState } from "react";
 
 function App() {
