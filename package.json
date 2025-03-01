@@ -13,7 +13,6 @@
     "react-dom": "^19.0.0",
     "react-script": "^2.0.5",
     "react-scripts": "^5.0.1",
-    "serialize-javascript": "^6.0.2",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -41,8 +40,12 @@
     ]
   },
   "devDependencies": {
+    "@tailwindcss/postcss": "^4.0.9",
     "autoprefixer": "^10.4.20",
+    "css-select": "^5.1.0",
     "postcss": "^8.5.3",
+    "serialize-javascript": "^6.0.2",
+    "svgo": "^3.3.2",
     "tailwindcss": "^4.0.9"
   }
 }
